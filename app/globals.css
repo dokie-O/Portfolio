@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0c10;
+  --background-elevated: #12151c;
+  --foreground: #e8e1d0;
+  --foreground-muted: #a0998a;
+  --gold: #c8aa6e;
+  --gold-bright: #f0e6d2;
+  --gold-dark: #785a28;
+  --accent: #0ac8b9;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Clears the sticky Navbar so anchor jumps don't land with the section
+     heading hidden underneath it. Keep in sync with TRIGGER_OFFSET in
+     components/layout/Navbar.tsx — both represent the same nav clearance. */
+  scroll-padding-top: 96px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-gold-dark: var(--gold-dark);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-cinzel);
+}
+
+body {
+  /* background-attachment: fixed pins the gradient to the viewport instead of
+     the full scrollable page. Without it, the radial-gradient's percentage-based
+     size/position are computed against body's full content height (thousands of
+     px on a long page), which throws off the falloff math and shows up as a hard
+     edge partway down Hero instead of a smooth glow. */
+  background-color: var(--background);
+  background-image: radial-gradient(
+    ellipse 80% 60% at 50% -10%,
+    color-mix(in srgb, var(--gold-dark) 18%, transparent),
+    transparent
+  );
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Hextech-style clipped-corner panel: cuts the top-left and bottom-right
+   corners so bordered elements read as angular UI plates rather than
+   ordinary rounded cards. */
+.hex-panel {
+  clip-path: polygon(
+    0 12px,
+    12px 0,
+    100% 0,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    0 100%
+  );
+}
+
+.hex-panel-sm {
+  clip-path: polygon(
+    0 6px,
+    6px 0,
+    100% 0,
+    100% calc(100% - 6px),
+    calc(100% - 6px) 100%,
+    0 100%
+  );
+}
