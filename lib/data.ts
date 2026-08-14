@@ -40,6 +40,8 @@ export type SocialLink = {
   href: string;
 };
 
+export const SITE_URL = "https://alfiemamangun.vercel.app";
+
 export const profile = {
   name: "Alfie Mamangun",
   title: "Frontend Developer",
