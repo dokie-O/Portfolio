@@ -5,6 +5,39 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import type { Project } from "@/lib/data";
 
+function SlideImage({
+  src,
+  alt,
+  priority,
+}: {
+  src: string;
+  alt: string;
+  priority: boolean;
+}) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className={`object-cover transition-opacity duration-300 ${
+          isLoading ? "opacity-0" : "opacity-100"
+        }`}
+        sizes="(min-width: 672px) 672px, 100vw"
+        onLoad={() => setIsLoading(false)}
+        priority={priority}
+      />
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-background">
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-gold-dark/40 border-t-gold" />
+        </div>
+      )}
+    </>
+  );
+}
+
 export default function ProjectModal({
   project,
   onClose,
@@ -13,14 +46,9 @@ export default function ProjectModal({
   onClose: () => void;
 }) {
   const [index, setIndex] = useState(0);
-  const [isImageLoading, setIsImageLoading] = useState(true);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const hasImages = project.images.length > 0;
   const imageCount = project.images.length;
-
-  useEffect(() => {
-    setIsImageLoading(true);
-  }, [index]);
 
   useEffect(() => {
     closeButtonRef.current?.focus();
@@ -65,23 +93,12 @@ export default function ProjectModal({
       >
         {hasImages && (
           <div className="relative aspect-video border-b border-gold-dark/40 bg-background">
-            <Image
+            <SlideImage
               key={index}
               src={project.images[index]}
               alt={`${project.title} screenshot ${index + 1} of ${imageCount}`}
-              fill
-              className={`object-cover transition-opacity duration-300 ${
-                isImageLoading ? "opacity-0" : "opacity-100"
-              }`}
-              sizes="(min-width: 672px) 672px, 100vw"
-              onLoad={() => setIsImageLoading(false)}
               priority={index === 0}
             />
-            {isImageLoading && (
-              <div className="absolute inset-0 flex items-center justify-center bg-background">
-                <div className="h-8 w-8 animate-spin rounded-full border-2 border-gold-dark/40 border-t-gold" />
-              </div>
-            )}
             {/* Soft vignette so the screenshot's edges blend into the dark
                 frame regardless of how bright the source image is — the
                 image itself stays true color here, unlike the card thumbnail. */}

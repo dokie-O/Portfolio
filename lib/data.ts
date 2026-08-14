@@ -43,7 +43,7 @@ export type SocialLink = {
 export const profile = {
   name: "Alfie Mamangun",
   title: "Frontend Developer",
-  tagline: "I build fast, accessible web apps end to end.",
+  tagline: "I build fast, accessible web apps.",
   bio: "I am a Frontend Developer who prioritize responsiveness, scalable interfaces, reusable component, and seamless user experience.",
   resumeUrl: "/resume.pdf",
 };

@@ -43,7 +43,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-8 flex max-w-xl flex-col gap-4">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <input
         type="checkbox"
         name="botcheck"
