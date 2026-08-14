@@ -4,7 +4,7 @@ import FadeIn from "@/components/ui/FadeIn";
 
 export default function Experience() {
   return (
-    <section id="experience" className="mx-auto max-w-4xl px-6 py-16">
+    <section id="experience" className="mx-auto max-w-7xl px-6 py-16">
       <FadeIn>
         <SectionHeading>Experience</SectionHeading>
       </FadeIn>

@@ -3,7 +3,7 @@ import FadeIn from "@/components/ui/FadeIn";
 
 export default function Hero() {
   return (
-    <section className="mx-auto flex min-h-[70vh] max-w-4xl flex-col justify-center px-6 py-24">
+    <section className="mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-center px-6 py-24">
       <FadeIn className="flex flex-col gap-6">
         <p className="text-xs font-semibold tracking-[0.2em] text-gold uppercase">
           {profile.title}

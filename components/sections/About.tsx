@@ -4,7 +4,7 @@ import FadeIn from "@/components/ui/FadeIn";
 
 export default function About() {
   return (
-    <section id="about" className="mx-auto max-w-4xl px-6 py-16">
+    <section id="about" className="mx-auto max-w-7xl px-6 py-16">
       <FadeIn>
         <SectionHeading>About</SectionHeading>
         <p className="max-w-2xl text-base leading-relaxed text-foreground-muted">

@@ -63,7 +63,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-gold-dark/50 bg-background/90 backdrop-blur">
       <div className="h-px bg-linear-to-r from-transparent via-gold to-transparent" />
-      <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
           href="#"
           className="flex items-center gap-2.5 font-display text-sm font-semibold tracking-[0.2em] text-gold-bright uppercase"

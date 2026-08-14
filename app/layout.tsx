@@ -23,9 +23,9 @@ const cinzel = Cinzel({
 });
 
 export const metadata: Metadata = {
-  title: "Alfie Mamangun — Portfolio",
+  title: "Alfie Mamangun Portfolio",
   description:
-    "Software engineer portfolio — projects, skills, and contact info.",
+    "Frontend Engineer portfolio, projects, skills, and contact info.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

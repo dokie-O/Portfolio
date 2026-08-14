@@ -8,13 +8,21 @@ import HexPanel from "@/components/ui/HexPanel";
 import FadeIn from "@/components/ui/FadeIn";
 import ProjectModal from "@/components/sections/ProjectModal";
 
+const VISIBLE_COUNT = 6;
+
 export default function ProjectsGrid({ projects }: { projects: Project[] }) {
   const [selected, setSelected] = useState<Project | null>(null);
+  const [expanded, setExpanded] = useState(false);
+
+  const visibleProjects = expanded
+    ? projects
+    : projects.slice(0, VISIBLE_COUNT);
+  const hasMore = projects.length > VISIBLE_COUNT;
 
   return (
     <>
-      <div className="grid gap-6 sm:grid-cols-2">
-        {projects.map((project, index) => (
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {visibleProjects.map((project, index) => (
           <FadeIn key={project.title} delay={index * 0.08}>
             <HexPanel
               onClick={() => setSelected(project)}
@@ -27,7 +35,7 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
                     alt=""
                     fill
                     className="object-cover grayscale-55 brightness-90 contrast-105 transition-all duration-500 group-hover:grayscale-0 group-hover:brightness-100"
-                    sizes="(min-width: 640px) 50vw, 100vw"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   />
                   {/* Screenshots come from other sites with their own palettes —
                       this tint keeps the grid visually cohesive with the theme
@@ -40,7 +48,7 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
               <h3 className="font-display text-base font-semibold tracking-wide text-gold-bright">
                 {project.title}
               </h3>
-              <p className="text-base text-foreground-muted">
+              <p className="line-clamp-2 text-base text-foreground-muted">
                 {project.description}
               </p>
               <ul className="flex flex-wrap gap-2">
@@ -60,7 +68,7 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
                     target="_blank"
                     rel="noreferrer"
                     onClick={(event) => event.stopPropagation()}
-                    className="text-gold transition-colors hover:text-gold-bright"
+                    className="text-accent transition-opacity hover:opacity-80"
                   >
                     Live
                   </a>
@@ -81,6 +89,18 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
           </FadeIn>
         ))}
       </div>
+
+      {hasMore && (
+        <div className="mt-8 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setExpanded((v) => !v)}
+            className="hex-panel-sm cursor-pointer border border-gold-dark px-6 py-2.5 text-xs font-semibold tracking-[0.2em] text-gold uppercase transition-colors hover:border-gold hover:text-gold-bright"
+          >
+            {expanded ? "Show less" : "Show more"}
+          </button>
+        </div>
+      )}
 
       <AnimatePresence>
         {selected && (

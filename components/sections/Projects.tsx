@@ -5,7 +5,7 @@ import ProjectsGrid from "@/components/sections/ProjectsGrid";
 
 export default function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-4xl px-6 py-16">
+    <section id="projects" className="mx-auto max-w-7xl px-6 py-16">
       <FadeIn>
         <SectionHeading>Projects</SectionHeading>
       </FadeIn>

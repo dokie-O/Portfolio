@@ -14,7 +14,7 @@ No game assets, icons, or logos are used — only the color/shape/type language.
 | `--foreground-muted`       | Secondary/body text                                                  |
 | `--gold` / `--gold-bright` | Accent text, borders, active states                                  |
 | `--gold-dark`              | Subtle borders, dividers                                             |
-| `--accent`                 | Teal highlight — currently used for the contact form's success state |
+| `--accent`                 | Teal highlight — contact form's success state, and the "Live" project links (card + modal), signaling an external live-site action distinct from gold's structural/primary use |
 
 These map to Tailwind utilities via `@theme inline`, so use `text-gold`,
 `border-gold-dark`, `bg-background-elevated`, etc. directly in class names.

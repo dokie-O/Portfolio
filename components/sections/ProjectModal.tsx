@@ -13,9 +13,14 @@ export default function ProjectModal({
   onClose: () => void;
 }) {
   const [index, setIndex] = useState(0);
+  const [isImageLoading, setIsImageLoading] = useState(true);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const hasImages = project.images.length > 0;
   const imageCount = project.images.length;
+
+  useEffect(() => {
+    setIsImageLoading(true);
+  }, [index]);
 
   useEffect(() => {
     closeButtonRef.current?.focus();
@@ -61,12 +66,22 @@ export default function ProjectModal({
         {hasImages && (
           <div className="relative aspect-video border-b border-gold-dark/40 bg-background">
             <Image
+              key={index}
               src={project.images[index]}
               alt={`${project.title} screenshot ${index + 1} of ${imageCount}`}
               fill
-              className="object-cover"
+              className={`object-cover transition-opacity duration-300 ${
+                isImageLoading ? "opacity-0" : "opacity-100"
+              }`}
               sizes="(min-width: 672px) 672px, 100vw"
+              onLoad={() => setIsImageLoading(false)}
+              priority={index === 0}
             />
+            {isImageLoading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-background">
+                <div className="h-8 w-8 animate-spin rounded-full border-2 border-gold-dark/40 border-t-gold" />
+              </div>
+            )}
             {/* Soft vignette so the screenshot's edges blend into the dark
                 frame regardless of how bright the source image is — the
                 image itself stays true color here, unlike the card thumbnail. */}
@@ -147,7 +162,7 @@ export default function ProjectModal({
                   href={project.liveUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="hex-panel-sm border border-gold bg-gold px-5 py-2.5 text-xs font-semibold tracking-[0.2em] text-background uppercase transition-colors hover:bg-gold-bright"
+                  className="hex-panel-sm border border-accent bg-accent px-5 py-2.5 text-xs font-semibold tracking-[0.2em] text-background uppercase transition-opacity hover:opacity-80"
                 >
                   Live site
                 </a>

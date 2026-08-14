@@ -6,7 +6,7 @@ import { skillIcons } from "@/components/sections/skillIcons";
 
 export default function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-4xl px-6 py-16">
+    <section id="skills" className="mx-auto max-w-7xl px-6 py-16">
       <FadeIn>
         <SectionHeading>Skills</SectionHeading>
       </FadeIn>

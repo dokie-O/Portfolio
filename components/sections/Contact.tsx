@@ -5,7 +5,7 @@ import ContactForm from "@/components/sections/ContactForm";
 
 export default function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-4xl px-6 py-24">
+    <section id="contact" className="mx-auto max-w-7xl px-6 py-24">
       <FadeIn>
         <SectionHeading>Contact</SectionHeading>
         <p className="max-w-xl text-lg text-foreground-muted">

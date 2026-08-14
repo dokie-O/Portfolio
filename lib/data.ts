@@ -60,7 +60,7 @@ export const experience: ExperienceEntry[] = [
         duration: "5 mos",
         skills: ["TypeScript", "React.js", "Next.js", "Tailwind CSS"],
         description:
-          "Building and maintaining responsive, accessible interfaces with React, Next.js, and TypeScript — turning designs into reusable components and shipping features end to end alongside the team.",
+          "Building and maintaining responsive, accessible interfaces with React, Next.js, and TypeScript, turning designs into reusable components and shipping features end to end alongside the team.",
       },
       {
         title: "Web Developer",
@@ -118,14 +118,29 @@ export const projects: Project[] = [
     liveUrl: undefined,
     repoUrl: undefined,
   },
+  {
+    title: "Signor",
+    description:
+      "Capstone project, frontend work on Signor, a document management system for Pampanga State University with blockchain-backed e-signatures and an AI assistant.",
+    longDescription:
+      "A capstone project built with a team: a document management platform for Pampanga State University, letting students, faculty, and staff create, route, and sign academic documents (excuse letters, request letters, authorization forms, and more) from template. E-signatures run through the Twala API with tamper-proof, blockchain-backed verification, and an AI assistant helps guide document creation. Includes a dedicated PL/DL Requests flow for students to apply for President's Lister and Dean's Lister recognition, with GWA tracking and status review. Handled the frontend, built with React, Hono, Drizzle ORM, and Neon.",
+    tags: ["React.js", "Tailwind CSS", "Hono", "Drizzle ORM", "Twala API"],
+    images: [
+      "/projects/signor/1.png",
+      "/projects/signor/2.png",
+      "/projects/signor/3.png",
+    ],
+    liveUrl: undefined,
+    repoUrl: undefined,
+  },
 ];
 
 export const skills: SkillGroup[] = [
   {
     category: "Languages",
-    items: ["HTML", "CSS", "JavaScript", "TypeScript", "SQL"],
+    items: ["TypeScript", "SQL"],
   },
-  { category: "Frontend", items: ["React.js", "Next.js", "Tailwind CSS"] },
+  { category: "Frontend", items: ["React.js", "Next.js", "Tailwind CSS", "HTML", "CSS", ] },
   {
     category: "Backend",
     items: ["Node.js", "Express.js", "Hono", "Drizzle ORM"],
